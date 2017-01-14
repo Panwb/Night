@@ -8,6 +8,7 @@ namespace Night.Comlib.Core.DAL
 {
     public sealed class Database
     {
+        #region Properties
         /// <summary>
         /// Gets the connect string.
         /// </summary>
@@ -28,14 +29,13 @@ namespace Night.Comlib.Core.DAL
             }
         }
 
-        /// <summary>
-        /// <para>When overridden in a derived class, gets the connection for this database.</para>
-        /// <seealso cref="IDbConnection"/>        
-        /// </summary>
-        /// <returns>
-        /// <para>The <see cref="IDbConnection"/> for this database.</para>
-        /// </returns>
-        public IDbConnection CreateConnection()
+        public IDbConnection Connection { get { return CreateConnection(); } }
+
+        #endregion
+        
+        #region Helper
+        
+        private IDbConnection CreateConnection()
         {
             IDbConnection connection = GetDbClientFactory().CreateConnection();
             connection.ConnectionString = ConnectionString;
@@ -43,12 +43,7 @@ namespace Night.Comlib.Core.DAL
             return connection;
         }
 
-        public ParameterCollection CreateParameters()
-        {
-            return new ParameterCollection();
-        }
-
-        public DbClientFactory GetDbClientFactory()
+        private DbClientFactory GetDbClientFactory()
         {
             switch (ProviderName)
             {
@@ -58,26 +53,6 @@ namespace Night.Comlib.Core.DAL
                     throw new NotSupportedException("Unknow DatabaseType. For Now, Only Supported MySQL.");
             }
         }
-
-        public IEnumerable<object> Query(string sql, object param = null, IDbTransaction transaction = null, bool buffered = true, int? commandTimeout = null, CommandType? commandType = null)
-        {
-            return Execute(conn => conn.Query(sql, param, transaction, buffered, commandTimeout, commandType));
-        }
-
-        private T Execute<T>(Func<IDbConnection, T> exec)
-        {
-
-            var connection = CreateConnection();
-            var result = exec(connection);
-            if (connection.State != ConnectionState.Closed)
-            {
-                connection.Close();
-            }
-            return result;
-        }
-    }
-
-    public class ParameterCollection : DynamicParameters
-    {
+        #endregion
     }
 }

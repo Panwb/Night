@@ -1,16 +1,19 @@
-﻿using System.Diagnostics;
+﻿using System.Data;
+using System.Diagnostics;
 
 namespace Night.Comlib.Core.DAL
 {
     [DebuggerStepThrough]
     public abstract class DbRepository
     {
+        private readonly Database _database;
+
         protected DbRepository()
         {
-            Database = new Database();
+            _database = new Database();
         }
-        
-        public Database Database { get; }
+
+        public IDbConnection DbConnection { get { return _database.Connection; } }
     }
 
     public interface IRepository
