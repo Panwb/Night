@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using Xunit;
 
-namespace Night.Comlib.Core.DAL.Tests
+namespace Night.Comlib.DAL.Tests
 {
     public class DatabaseTest
     {

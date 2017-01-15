@@ -1,7 +1,7 @@
 ﻿using System.Data.Common;
 using System.Diagnostics;
 
-namespace Night.Comlib.Core.DAL
+namespace Night.Comlib.DAL
 {
     public abstract class DbClientFactory
     {

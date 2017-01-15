@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Diagnostics;
 
-namespace Night.Comlib.Core.DAL
+namespace Night.Comlib.DAL
 {
     [DebuggerStepThrough]
-    public abstract class DbRepository
+    public abstract class DbRepository : IRepository
     {
         private readonly Database _database;
 
@@ -13,11 +13,11 @@ namespace Night.Comlib.Core.DAL
             _database = new Database();
         }
 
-        public IDbConnection DbConnection { get { return _database.Connection; } }
+        public IDbConnection Database { get { return _database.Connection; } }
     }
 
     public interface IRepository
     {
-        Database Database { get; }
+        IDbConnection Database { get; }
     }
 }

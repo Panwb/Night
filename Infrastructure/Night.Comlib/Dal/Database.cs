@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using Dapper;
 
-namespace Night.Comlib.Core.DAL
+namespace Night.Comlib.DAL
 {
     public sealed class Database
     {

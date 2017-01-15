@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,9 +56,14 @@
     <Compile Include="Dal\Database.cs" />
     <Compile Include="Dal\DbClientFactory.cs" />
     <Compile Include="Dal\DbProvider.cs" />
+    <Compile Include="DomainModel\Entity.cs" />
+    <Compile Include="Services\RuleViolation.cs" />
     <Compile Include="Repository\DbRepository.cs" />
     <Compile Include="Dal\MySql\MySqlClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\ServiceResultBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -64,6 +71,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

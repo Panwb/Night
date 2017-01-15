@@ -6,7 +6,7 @@ using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-namespace Night.Comlib.Core.DAL
+namespace Night.Comlib.DAL
 {
     public class MySqlClientFactory : DbClientFactory
     {
